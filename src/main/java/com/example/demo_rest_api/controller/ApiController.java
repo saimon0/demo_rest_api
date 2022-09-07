@@ -17,7 +17,7 @@ public class ApiController {
     }
     @RequestMapping("")
     public String getCars() {
-        return "all cars returned";
+        return "All cars were returned";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
