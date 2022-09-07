@@ -21,7 +21,7 @@ public class ApiController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Car getCars(@PathVariable("id") Integer id) {
+    public String getCars(@PathVariable("id") Integer id) {
         return "car with id: " + id + " returned or http 404";
     }
 
