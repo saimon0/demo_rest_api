@@ -1,20 +1,8 @@
 package com.example.demo_rest_api.repository;
 
 import com.example.demo_rest_api.model.Car;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+public interface CarRepository extends JpaRepository<Car, Integer> {
 
-@Repository
-public class CarRepository {
-    private ArrayList<Car> cars;
-
-    public CarRepository() {
-        this.cars = new ArrayList<>();
-    }
-
-    public void persistCar(Car car) {
-
-    }
 }

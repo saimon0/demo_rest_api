@@ -1,25 +1,33 @@
 package com.example.demo_rest_api.controller;
-
+import com.example.demo_rest_api.model.Car;
+import com.example.demo_rest_api.service.CarManager;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("api/cars")
 public class ApiController {
+
+    private final CarManager carManager;
+
+    ApiController(CarManager carManager) {
+        this.carManager = carManager;
+    }
     @RequestMapping("")
     public String getCars() {
         return "all cars returned";
-    }   
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getCars(@PathVariable("id") Integer id) {
+    public Car getCars(@PathVariable("id") Integer id) {
         return "car with id: " + id + " returned or http 404";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String createCar(@PathVariable("id") Integer id) {
-        return "car with rendered id will be created and will return 201 or some http code if car payload will be incorrect";
+    public void createCar(@RequestBody Car car) {
+        carManager.addCar(car);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
